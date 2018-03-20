@@ -10,6 +10,7 @@ html {
 
 body {
     margin: 0;
+    text-align: center;
 }
 
 a {
@@ -30,6 +31,48 @@ a {
 
 header{
     height: 3.75rem;
+    width: 100%;
+    background:rgba(9, 89, 136, 0.329);
+    margin: 0;
+}
+nav{
+    height: 100%;
+}
+.navbar-container{
+    height: 100%;
+
+}
+
+ul{
+    margin: 0 auto;
+    width: 50%;
+    height: 100%;
+    
+}
+
+li{
+    list-style-type:none;
+    height: 100%;
+    width: 75px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    display: flex;
+    
+}
+
+a{
+    color: rgba(3, 3, 3, 0.589);
+    display: block;
+    width: 100%;
+    height: 100%;
+    justify-content:center;
+    align-items: center;
+   
+    
+}
+
+a:hover{
+    box-shadow: -1px 0 0 #1d1d1d, inset 0 -6px 0 #5d5674;
 }
 
 /* ----- Main ----- */
