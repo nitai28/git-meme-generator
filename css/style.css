@@ -34,6 +34,8 @@ header{
 
 /* ----- Main ----- */
 
+/* Gallery - Grid */
+
 .gallery-grid{
     display: grid;
     grid-template-columns: repeat(8,120px);
@@ -43,6 +45,40 @@ header{
 
 .gallery-grid div{
     background-size: cover;
+}
+
+/* About */
+.about {
+    height: 31.25rem;
+}
+.about .container {
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+}
+.about-item {
+    height: 50%;
+    border: 2px solid blue;
+}
+.about-pic {
+    background-size: cover;
+    height: 100%;
+    width: 200px;
+}
+.itay-pic {
+    background-image: url("../img/itay.jpg");
+}
+.nitai-pic {
+    background-image: url("../img/nitai.jpg");
+}
+
+.about-info {
+    width:100%;
+    text-align: center;
+}
+
+.about-info h4 {
+    margin-bottom: 1.25rem;
 }
 
 /* ----- flex ----- */
@@ -85,6 +121,10 @@ header{
 
 .flex-column {
     flex-direction: column;
+}
+
+.flex-row-reverse {
+    flex-direction: row-reverse;
 }
 
 .flex-start {
