@@ -1,16 +1,38 @@
-*{
+/* ----- Globals ----- */
+
+* {
     box-sizing: border-box;
 }
-body{
+
+html {
+    font-size: 16px;
+}
+
+body {
     margin: 0;
 }
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a {
+    margin: 0;
+}
+
+/* ----- Header ----- */
 
 header{
     height: 3.75rem;
 }
-main{
-    
-}
+
+/* ----- Main ----- */
 
 .gallery-grid{
     display: grid;
@@ -21,4 +43,50 @@ main{
 
 .gallery-grid div{
     background-size: cover;
+}
+
+/* ----- flex ----- */
+
+.flex {
+    display: flex;
+}
+
+.direction-column {
+    flex-direction: column;
+}
+
+.inline-flex {
+    display: inline-flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-full {
+    flex: 1;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-start {
+    align-items: flex-start;
 }
