@@ -14,7 +14,6 @@ main{
 
 .gallery-grid{
     display: grid;
-    background-color: aquamarine;
     grid-template-columns: repeat(8,120px);
     grid-auto-rows: 120px; 
     grid-gap: 10px;
