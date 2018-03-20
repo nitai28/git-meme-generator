@@ -1,0 +1,25 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+}
+
+header{
+    height: 3.75rem;
+}
+main{
+    
+}
+
+.gallery-grid{
+    display: grid;
+    background-color: aquamarine;
+    grid-template-columns: repeat(8,120px);
+    grid-auto-rows: 120px; 
+    grid-gap: 10px;
+}
+
+.gallery-grid div{
+    background-size: cover;
+}
