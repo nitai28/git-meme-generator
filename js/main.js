@@ -18,8 +18,6 @@ var gMeme = {
     ]
 }
 
-
-
 function init() {
     gNextId = 1;
     renderGallery();
@@ -35,7 +33,7 @@ function renderGallery() {
     gImgs.forEach(function (img, idx) {
         strHtml += `<div 
         style="background-image:url(${img.url})" 
-        data-id="${img.id}" class="meme-pic"
+        data-id="${img.id}" onclick="openGallery()" class="meme-pic"
         ></div>
         `
     });
@@ -52,4 +50,14 @@ function addImg(url, keywords) {
     }
     gImgs.push(img);
     renderGallery();
+}
+
+function openGallery(){
+    var elpage1=document.querySelectorAll('.page1');
+    var elpage2=document.querySelector('.page2');
+    elpage2.classList.toggle('hide');
+    elpage1.forEach(function(elpage){
+        elpage.classList.toggle('hide');
+    })
+    
 }
