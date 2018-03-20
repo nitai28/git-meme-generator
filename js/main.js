@@ -1,38 +1,33 @@
 'use strict'
 
-var gImgs = 
-[{ id: 1, url: 'img/1.jpg', keywords: ['happy'] },
-
-{ id: 1, url: 'img/1.jpg', keywords: ['happy'] }, 
-{ id: 1, url: 'img/1.jpg', keywords: ['happy'] }];
+var gImgs = [
+];
 var gNextId;
 var gMeme = {
     selectedImgId: 5,
-    txts: [
-        {
-            line: 'I never eat Falafel',
-            size: 20,
-            align: 'left',
-            color: 'red'
-        }
-    ]
+    txts: [{
+        line: 'I never eat Falafel',
+        size: 20,
+        align: 'left',
+        color: 'red'
+    }]
 }
 
 
 
 function init() {
     gNextId = 1;
-    renderGallery();
-    addImg('img/2.jpg',['happy','sad']);
-    addImg('img/3.jpg',['happy','sad']);
+    addImg('img/1.jpg', ['Lala']);
+    addImg('img/2.jpg', ['happy', 'sad']);
+    addImg('img/3.jpg', ['happy', 'sad']);
 }
 
 
 
-function renderGallery() {
+function renderGallery(imgs) {
     var elGrid = document.querySelector('.gallery-grid');
     var strHtml = '';
-    gImgs.forEach(function (img, idx) {
+    imgs.forEach(function (img, idx) {
         strHtml += `<div 
         style="background-image:url(${img.url})" 
         data-id="${img.id}" class="meme-pic"
@@ -51,5 +46,17 @@ function addImg(url, keywords) {
         keywords: keywords
     }
     gImgs.push(img);
-    renderGallery();
+    renderGallery(gImgs);
+}
+
+function filterImages(event) {
+    var elSearch = document.querySelector('#search');
+    var keyword = elSearch.value;
+    if(!keyword) return renderGallery(gImgs);
+    var imgs = gImgs.filter(function(img) {
+        return img.keywords.some(function (imgKeyword) {
+            return imgKeyword.indexOf(keyword) !== -1;
+        })
+    });
+    renderGallery(imgs);
 }
