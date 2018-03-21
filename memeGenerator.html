@@ -34,12 +34,22 @@
     </header>
     <main>
         <section class="meme-gen page2 flex justify-center align-center hide">
-            <canvas>
+            <button class="btn-close-gallery flex-self flex-end-self" onclick="openGallery()">close window</button>
+            <canvas id="my-canvas">
             </canvas>
 
             <div>
-                <form>
-
+                <form class="edit-pic flex space-between flex-column">
+                    <div class="text-container flex flex-column">
+                        <input class="text-pic"  type="text" onkeyup="drawImg()" placeholder="Enter text ">
+                        <div class="btn-container justify-center flex">
+                            <button>x</button>
+                            <button>Y</button>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="submit-btn" >Save</button>
+                     </div>
                 </form>
             </div>
 
