@@ -19,23 +19,25 @@
 <body onload="init()">
     <div class="keywords-modal hide flex justify-center align-center">
         <div class="keywords-box flex justify-center align-center flex-wrap justify-content">
-            <button class="clear-btn" onclick="toggleKeywordsModal()"><i class="fas fa-times fa-4x"></i></button>
+            <button class="clear-btn" onclick="toggleKeywordsModal()">
+                <i class="fas fa-times fa-4x"></i>
+            </button>
         </div>
     </div>
     <header>
         <nav>
             <div class="navbar-container">
                 <ul class="flex justify-center space-between ">
-                    <li class="justify-center align-center">
+                    <li class="justify-center">
                         <a href="#">Gallery</a>
                     </li>
-                    <li>
+                    <li class="justify-center">
                         <a href="#">About</a>
                     </li>
-                    <li>
+                    <li class="justify-center">
                         <a href="#">Blog</a>
                     </li>
-                    <li>
+                    <li class="justify-center">
                         <a href="#">Contact</a>
                     </li>
                 </ul>
@@ -52,12 +54,16 @@
             <div>
                 <form onsubmit="return false;" class="edit-pic flex space-between flex-column">
                     <div class="text-container flex flex-column">
-                        <input class="meme-text-input"  type="text" onkeyup="editMemeText()" placeholder="Enter text ">
+                        <input class="meme-text-input" type="text" onkeyup="editMemeText()" placeholder="Enter text" onfocus="chooseText(0)">
                         <div class="btn-container justify-center flex">
-                            <input type="color" class="btn-color-change" onchange="changeColorText()"> 
-                            <button type="" class="text-shadow" onclick="toggleMemeShadow()" >shadow</button>
-                            <button onclick="incDecFontSize(true)">A<i class="fas fa-plus"></i></button>
-                            <button onclick="incDecFontSize(false)">A<i class="fas fa-minus"></i></button>
+                            <input type="color" class="btn-color-change" onchange="changeColorText()">
+                            <button type="" class="text-shadow" onclick="toggleMemeShadow()">shadow</button>
+                            <button onclick="incDecFontSize(true)">A
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <button onclick="incDecFontSize(false)">A
+                                <i class="fas fa-minus"></i>
+                            </button>
                             <select onchange="fontChoose()" name="" id="">
                                 <option value="Raleway"></option>
                                 <option value=""></option>
@@ -65,17 +71,25 @@
                                 <option value="Indie"></option>
                             </select>
                             <input id="text-align-left" type="radio" name="text-align" class="align-left" onclick="changeTextAlign(event, 'left')" checked>
-                            <label for="text-align-left"><i class="fas fa-align-left"></i></label>
-                            <input id="text-align-center" type="radio" name="text-align" class="align-center" onclick="changeTextAlign(event, 'center')" />
-                            <label for="text-align-center"><i class="fas fa-align-center"></i></label>
-                            <input id="text-align-right" type="radio" name="text-align" class="align-right" onclick="changeTextAlign(event, 'right')" />
-                            <label for="text-align-right"><i class="fas fa-align-right"></i></label>
+                            <label for="text-align-left">
+                                <i class="fas fa-align-left"></i>
+                            </label>
+                            <input id="text-align-center" type="radio" name="text-align" class="align-center" onclick="changeTextAlign(event, 'center')"
+                            />
+                            <label for="text-align-center">
+                                <i class="fas fa-align-center"></i>
+                            </label>
+                            <input id="text-align-right" type="radio" name="text-align" class="align-right" onclick="changeTextAlign(event, 'right')"
+                            />
+                            <label for="text-align-right">
+                                <i class="fas fa-align-right"></i>
+                            </label>
                         </div>
-                        <input class="meme-text-input"  type="text" onkeyup="editMemeText()" placeholder="Enter text ">
+                        <input class="meme-text-input" type="text" onkeyup="editMemeText()" placeholder="Enter text" onfocus="chooseText(1)">
                     </div>
                     <div>
-                        <button type="submit" class="submit-btn" >Save</button>
-                     </div>
+                        <button type="submit" class="submit-btn">Save</button>
+                    </div>
                 </form>
             </div>
 

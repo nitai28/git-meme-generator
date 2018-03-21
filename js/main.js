@@ -4,9 +4,17 @@ var gImgs = [];
 var gNextId;
 var gMeme = {
     selectedImgId: 5,
+    selectedTextIdx: 0,
     texts: [{
         line: 'I never eat Falafel',
-        size: 10,
+        size: 20,
+        align: 'left',
+        color: 'black',
+        shadow: false
+    }
+    ,{
+        line: 'I never eat Falafel',
+        size: 20,
         align: 'left',
         color: 'black',
         shadow: false
@@ -118,37 +126,46 @@ function renderMeme(){
     canvas.width = memeImg.width;
     memeImg.onload = function () {
         ctx.drawImage(memeImg, 0, 0, canvas.width, canvas.height);
-        ctx.font = gMeme.texts[0].size+'px'+' serif';
-        ctx.fillStyle = '' + gMeme.texts[0].color;
-        if (gMeme.texts[0].shadow) {
-            ctx.shadowBlur = 15;
-            ctx.shadowColor = '#898';
-        } else ctx.shadowBlur = 0;
-        ctx.textAlign = gMeme.texts[0].align;
-        var posX;
-        if(ctx.textAlign === 'left') posX = 50;
-        else if(ctx.textAlign === 'center') posX = canvas.width/2;
-        else if(ctx.textAlign === 'right') posX = canvas.width-50;
-        ctx.fillText(gMeme.texts[0].line, posX, 100);
+        gMeme.texts.forEach(function(text, idx) {
+            ctx.font = text.size+'px'+' serif';
+            ctx.fillStyle = '' + text.color;
+            if (text.shadow) {
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = '#000';
+            } else ctx.shadowBlur = 0;
+            ctx.textAlign = text.align;
+            var posX;
+            if(ctx.textAlign === 'left') posX = 50;
+            else if(ctx.textAlign === 'center') posX = canvas.width/2;
+            else if(ctx.textAlign === 'right') posX = canvas.width-50;
+            var posY = (idx === 0) ? 100 : canvas.height - 100; // JUST FOR NOW!
+            ctx.fillText(text.line, posX, posY);
+        });
     }
 }
 
 function editMemeText() {
-    var inputText = document.querySelector('.meme-text-input').value;
+    var textIdx = gMeme.selectedTextIdx;
+    var inputText = document.querySelectorAll('.meme-text-input');
     console.log(inputText);
-    gMeme.texts[0].line = inputText;
+    gMeme.texts[textIdx].line = inputText[textIdx].value;
     renderMeme();
 
 }
 
 function changeColorText() {
+    var textIdx = gMeme.selectedTextIdx;
     var textColor = document.querySelector('.btn-color-change').value;
-    gMeme.texts[0].color = textColor;
+    gMeme.texts[textIdx].color = textColor;
     renderMeme();
 }
 
 function chooseImg(id) {
     gMeme['selectedImgId'] = id;
+}
+
+function chooseText(idx) {
+    gMeme['selectedTextIdx'] = idx;
 }
 
 function getPosImg() {
@@ -158,7 +175,8 @@ function getPosImg() {
 }
 
 function toggleMemeShadow() {
-    (gMeme.texts[0].shadow) ? gMeme.texts[0].shadow = false : gMeme.texts[0].shadow = true;
+    var textIdx = gMeme.selectedTextIdx;
+    gMeme.texts[textIdx].shadow = (gMeme.texts[textIdx].shadow) ? false :  true;
     renderMeme();
 }
 
@@ -178,19 +196,21 @@ function toggleKeywordsModal() {
 }
 
 function incDecFontSize(inc){
-    (inc)?  gMeme.texts[0].size+=4: gMeme.texts[0].size-=4;
+    var textIdx = gMeme.selectedTextIdx;
+    (inc)?  gMeme.texts[textIdx].size+=4: gMeme.texts[0].size-=4;
     renderMeme();
 }
 
 function changeTextAlign(event, align) {
+    var textIdx = gMeme.selectedTextIdx;
     if(align === 'left') {
-        gMeme.texts[0].align = 'left';
+        gMeme.texts[textIdx].align = 'left';
     }
     else if(align === 'right') {
-        gMeme.texts[0].align = 'right';
+        gMeme.texts[textIdx].align = 'right';
     }
     else if(align === 'center') {
-        gMeme.texts[0].align = 'center';
+        gMeme.texts[textIdx].align = 'center';
     }
     renderMeme();
 }
