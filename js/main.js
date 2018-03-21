@@ -116,8 +116,8 @@ function openGallery() {
     renderMeme();
 }
 
-function renderMeme(){
-    var img=gImgs[getPosImg()];
+function renderMeme() {
+    var img = gImgs[getPosImg()];
     var canvas = document.getElementById("meme-canvas");
     var ctx = canvas.getContext("2d");
     var memeImg = new Image();
@@ -177,6 +177,10 @@ function getPosImg() {
 function toggleMemeShadow() {
     var textIdx = gMeme.selectedTextIdx;
     gMeme.texts[textIdx].shadow = (gMeme.texts[textIdx].shadow) ? false :  true;
+    renderMeme();
+}
+function toggleMemeShadow() {
+    (gMeme.texts[0].shadow) ? gMeme.texts[0].shadow = false : gMeme.texts[0].shadow = true;
     renderMeme();
 }
 
