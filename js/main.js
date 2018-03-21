@@ -159,6 +159,7 @@ function getPosImg() {
     })
 }
 
+
 function toggleMemeShadow() {
     (gMeme.texts[0].shadow) ? gMeme.texts[0].shadow = false : gMeme.texts[0].shadow = true;
     renderMeme();
