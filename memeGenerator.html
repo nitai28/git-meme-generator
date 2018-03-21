@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Mina|Raleway|Saira+Extra+Condensed" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Mina|Nunito|Raleway|Saira+Extra+Condensed" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Mina|Nunito|Raleway|Saira+Extra+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="lib/css/animate.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Meme Generator by Nitai & Itay</title>
 </head>
@@ -49,7 +50,7 @@
             </canvas>
 
             <div>
-                <form class="edit-pic flex space-between flex-column">
+                <form onsubmit="return false;" class="edit-pic flex space-between flex-column">
                     <div class="text-container flex flex-column">
                         <input class="meme-text-input"  type="text" onkeyup="editMemeText()" placeholder="Enter text ">
                         <div class="btn-container justify-center flex">
@@ -63,7 +64,14 @@
                                 <option value=""></option>
                                 <option value="Indie"></option>
                             </select>
+                            <input id="text-align-left" type="radio" name="text-align" class="align-left" onclick="changeTextAlign(event, 'left')" checked>
+                            <label for="text-align-left"><i class="fas fa-align-left"></i></label>
+                            <input id="text-align-center" type="radio" name="text-align" class="align-center" onclick="changeTextAlign(event, 'center')" />
+                            <label for="text-align-center"><i class="fas fa-align-center"></i></label>
+                            <input id="text-align-right" type="radio" name="text-align" class="align-right" onclick="changeTextAlign(event, 'right')" />
+                            <label for="text-align-right"><i class="fas fa-align-right"></i></label>
                         </div>
+                        <input class="meme-text-input"  type="text" onkeyup="editMemeText()" placeholder="Enter text ">
                     </div>
                     <div>
                         <button type="submit" class="submit-btn" >Save</button>
