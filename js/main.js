@@ -4,7 +4,7 @@ var gImgs = [];
 var gNextId;
 var gMeme = {
     selectedImgId: 5,
-    txts: [{
+    texts: [{
         line: 'I never eat Falafel',
         size: 20,
         align: 'left',
@@ -25,7 +25,8 @@ function init() {
     addImg('img/3.jpg', ['happy', 'sad']);
     renderKeywords();
 }
-
+// addimage // add to the model
+// render //  take the model and render it
 
 
 function renderGallery(imgs) {
@@ -53,14 +54,6 @@ function addImg(url, keywords) {
     renderGallery(gImgs);
 }
 
-function openGallery() {
-    var elpage1 = document.querySelectorAll('.page1');
-    var elpage2 = document.querySelector('.page2');
-    elpage2.classList.toggle('hide');
-    elpage1.forEach(function (elpage) {
-        elpage.classList.toggle('hide');
-    });
-}
 
 function filterImages(keyword, elSearchValue) {
     if (!keyword && !elSearchValue) return renderGallery(gImgs);
@@ -81,48 +74,41 @@ function openGallery() {
     elpage1.forEach(function (elpage) {
         elpage.classList.toggle('hide');
     });
-    var pos = getPosImg(gImgs);
-    drawImg(gImgs[pos]);
+    renderMeme();
 }
 
-
-function drawImg(img) {
-    if (!img) {
-        var pos = gImgs.findIndex(function (img) {
-            return img.id === gMeme.selectedImgId
-        })
-        img = gImgs[pos];
-    }
-    var canvas = document.getElementById("my-canvas"),
-        ctx = canvas.getContext("2d");
-
-    var background = new Image();
-    background.src = img.url;
-    console.log(background.height)
-    canvas.height = background.height;
-    canvas.width = background.width;
-    // Make sure the image is loaded first otherwise nothing will draw.
-    background.onload = function () {
-        ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-        addText();
+function renderMeme(){
+    var img=gImgs[getPosImg()];
+    // gMeme.txts[0].line;
+    var canvas = document.getElementById("meme-canvas");
+    var ctx = canvas.getContext("2d");
+    var memeImg = new Image();
+    memeImg.src = img.url;
+    canvas.height = memeImg.height;
+    canvas.width = memeImg.width;
+    memeImg.onload = function () {
+        ctx.drawImage(memeImg, 0, 0, canvas.width, canvas.height);
+        ctx.font = "48px serif";
+        ctx.fillStyle = '#fff';
+        ctx.fillText(gMeme.texts[0].line, 50, 100);
     }
 }
 
-function addText() {
-    var elInput = document.querySelector('.text-pic');
-    var canvas = document.getElementById('my-canvas');
-    var ctx = canvas.getContext('2d');
-    ctx.font = "48px serif";
-    ctx.fillStyle = '#fff';
-    ctx.fillText(elInput.value, 50, 100);
+function editMemeText(){
+    var inputText = document.querySelector('.meme-text-input').value;
+    console.log(inputText);
+    gMeme.texts[0].line = inputText;
+    renderMeme();
+    
 }
+
+
 
 function chooseImg(id) {
-    console.log(id);
     gMeme['selectedImgId'] = id;
 }
 
-function getPosImg(gImgs){
+function getPosImg(){
     return gImgs.findIndex(function (img) {
         return img.id === gMeme.selectedImgId
     })

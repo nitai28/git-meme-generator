@@ -40,13 +40,13 @@
     <main>
         <section class="meme-gen page2 flex justify-center align-center hide">
             <button class="btn-close-gallery flex-self flex-end-self" onclick="openGallery()">close window</button>
-            <canvas id="my-canvas">
+            <canvas id="meme-canvas">
             </canvas>
 
             <div>
                 <form class="edit-pic flex space-between flex-column">
                     <div class="text-container flex flex-column">
-                        <input class="text-pic"  type="text" onkeyup="drawImg()" placeholder="Enter text ">
+                        <input class="meme-text-input"  type="text" onkeyup="editMemeText()" placeholder="Enter text ">
                         <div class="btn-container justify-center flex">
                             <button>x</button>
                             <button>Y</button>
