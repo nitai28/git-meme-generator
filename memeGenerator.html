@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="lib/fonts/font-awesome/web-fonts-with-css/css/fontawesome-all.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Mina|Raleway" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Mina|Raleway|Saira+Extra+Condensed" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Mina|Nunito|Raleway|Saira+Extra+Condensed" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Mina|Nunito|Raleway|Saira+Extra+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="lib/css/animate.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Meme Generator by Nitai & Itay</title>
@@ -25,7 +20,7 @@
     <header>
         <nav>
             <div class="navbar-container">
-                <ul class="flex justify-center space-between ">
+                <ul class="flex justify-center space-between">
                     <li class="justify-center align-center">
                         <a href="#">Gallery</a>
                     </li>
@@ -58,11 +53,12 @@
                             <button type="" class="text-shadow" onclick="toggleMemeShadow()" >shadow</button>
                             <button onclick="incDecFontSize(true)">A<i class="fas fa-plus"></i></button>
                             <button onclick="incDecFontSize(false)">A<i class="fas fa-minus"></i></button>
-                            <select onchange="fontChoose()" name="" id="">
-                                <option value="Raleway"></option>
-                                <option value=""></option>
-                                <option value=""></option>
-                                <option value="Indie"></option>
+                            <select class="font-choose" onchange="fontChoose()" name="" id="">
+                                <option value="indie-flower">indie-flower</option>
+                                <option value="mina-regular">mina-regular</option>
+                                <option value="nunito-regular">nunito-regular</option>
+                                <option value="pacifico-regular">pacifico-regular</option>
+                                <option value="raleway-regular">raleway-regular</option>
                             </select>
                             <input id="text-align-left" type="radio" name="text-align" class="align-left" onclick="changeTextAlign(event, 'left')" checked>
                             <label for="text-align-left"><i class="fas fa-align-left"></i></label>
@@ -74,7 +70,7 @@
                         <input class="meme-text-input"  type="text" onkeyup="editMemeText()" placeholder="Enter text ">
                     </div>
                     <div>
-                        <button type="submit" class="submit-btn" >Save</button>
+                            <a id="download" download="canvas.png"><button type="button" onClick="download()">Download</button></a>
                      </div>
                 </form>
             </div>
