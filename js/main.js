@@ -8,6 +8,8 @@ var gMeme = {
         line: 'I never eat Falafel',
         size: 20,
         align: 'left',
+        color: 'black',
+        shadow: false
     }]
 }
 var gCurrImg;
@@ -77,9 +79,8 @@ function openGallery() {
     renderMeme();
 }
 
-function renderMeme(){
-    var img=gImgs[getPosImg()];
-    // gMeme.txts[0].line;
+function renderMeme() {
+    var img = gImgs[getPosImg()];
     var canvas = document.getElementById("meme-canvas");
     var ctx = canvas.getContext("2d");
     var memeImg = new Image();
@@ -88,27 +89,35 @@ function renderMeme(){
     canvas.width = memeImg.width;
     memeImg.onload = function () {
         ctx.drawImage(memeImg, 0, 0, canvas.width, canvas.height);
-        ctx.font = "48px serif";
-        ctx.fillStyle = '#fff';
+        ctx.font = gMeme.texts[0].size+'px'+' serif';
+        ctx.fillStyle = '' + gMeme.texts[0].color;
+        if (gMeme.texts[0].shadow) {
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = '#898';
+        } else ctx.shadowBlur = 0;
         ctx.fillText(gMeme.texts[0].line, 50, 100);
     }
 }
 
-function editMemeText(){
+function editMemeText() {
     var inputText = document.querySelector('.meme-text-input').value;
     console.log(inputText);
     gMeme.texts[0].line = inputText;
     renderMeme();
-    
+
 }
 
-
+function changeColorText() {
+    var textColor = document.querySelector('.btn-color-change').value;
+    gMeme.texts[0].color = textColor;
+    renderMeme();
+}
 
 function chooseImg(id) {
     gMeme['selectedImgId'] = id;
 }
 
-function getPosImg(){
+function getPosImg() {
     return gImgs.findIndex(function (img) {
         return img.id === gMeme.selectedImgId
     })
@@ -119,9 +128,13 @@ function mapKeywords() {
     }, [])
 
     return allKeywords.reduce(function (acc, keyword) {
-        (!acc[keyword]) ? acc[keyword] = 1: acc[keyword]++;
+        (!acc[keyword]) ? acc[keyword] = 1 : acc[keyword]++;
         return acc;
     }, {});
+}
+function toggleMemeShadow() {
+    (gMeme.texts[0].shadow) ? gMeme.texts[0].shadow = false : gMeme.texts[0].shadow = true;
+    renderMeme();
 }
 
 function renderKeywords() {
@@ -129,7 +142,7 @@ function renderKeywords() {
     var keywordsMap = mapKeywords();
     var strHtml = '';
     for (var key in keywordsMap) {
-        strHtml += `<span style="font-size: calc(1em + ${+keywordsMap[key]*10}px)" onclick="filterImages(this.innerHTML)">${key}</span> `
+        strHtml += `<span style="font-size: calc(1em + ${+keywordsMap[key] * 10}px)" onclick="filterImages(this.innerHTML)">${key}</span> `
     }
     elKeywordsBox.innerHTML += strHtml;
 }
@@ -137,4 +150,9 @@ function renderKeywords() {
 function toggleKeywordsModal() {
     var elKeywordsModal = document.querySelector('.keywords-modal');
     elKeywordsModal.classList.toggle('hide');
+}
+
+function incDecFontSize(inc){
+    (inc)?  gMeme.texts[0].size+=4: gMeme.texts[0].size-=4;
+    renderMeme();
 }
