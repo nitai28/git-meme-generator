@@ -11,6 +11,11 @@
 </head>
 
 <body onload="init()">
+    <div class="keywords-modal hide flex justify-center align-center">
+        <div class="keywords-box flex justify-center align-center flex-wrap justify-content">
+            <button class="clear-btn" onclick="toggleKeywordsModal()"><i class="fas fa-times fa-4x"></i></button>
+        </div>
+    </div>
     <header>
         <nav>
             <div class="navbar-container">
@@ -57,7 +62,8 @@
         <section class="page1">
             <h1>Choose a picture</h1>
             <div>
-                <input type="search" id="search" name="search" onkeyup="filterImages(event)" placeholder="Enter image keyword">
+                <input type="search" id="search" name="search" onkeyup="filterImages(this.value)" placeholder="Enter image keyword">
+                <button onclick="toggleKeywordsModal()">Keywords List</button>
             </div>
             <div class="gallery-grid">
 

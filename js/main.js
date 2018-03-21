@@ -1,7 +1,6 @@
 'use strict'
 
-var gImgs = [
-];
+var gImgs = [];
 var gNextId;
 var gMeme = {
     selectedImgId: 5,
@@ -18,6 +17,13 @@ function init() {
     addImg('img/1.jpg', ['Lala']);
     addImg('img/2.jpg', ['happy', 'sad']);
     addImg('img/3.jpg', ['happy', 'sad']);
+    addImg('img/3.jpg', ['happy', 'sad']);
+    addImg('img/itay.jpg', ['Nahum', 'sad']);
+    addImg('img/nitai.jpg', ['Nahum', 'sad']);
+    addImg('img/3.jpg', ['Ugly', 'sad']);
+    addImg('img/3.jpg', ['happy', 'sad']);
+    addImg('img/3.jpg', ['happy', 'sad']);
+    renderKeywords();
 }
 
 
@@ -41,18 +47,28 @@ function addImg(url, keywords) {
     var img = {
         id: gNextId++,
         url: url,
-        keywords: keywords
+        keywords: keywords,
     }
     gImgs.push(img);
     renderGallery(gImgs);
 }
-function filterImages(event) {
-    var elSearch = document.querySelector('#search');
-    var keyword = elSearch.value;
-    if (!keyword) return renderGallery(gImgs);
+
+function openGallery() {
+    var elpage1 = document.querySelectorAll('.page1');
+    var elpage2 = document.querySelector('.page2');
+    elpage2.classList.toggle('hide');
+    elpage1.forEach(function (elpage) {
+        elpage.classList.toggle('hide');
+    });
+}
+
+function filterImages(keyword, elSearchValue) {
+    if (!keyword && !elSearchValue) return renderGallery(gImgs);
+    if (!keyword) keyword = elSearchValue.toLowerCase();
     var imgs = gImgs.filter(function (img) {
         return img.keywords.some(function (imgKeyword) {
-            return imgKeyword.indexOf(keyword) !== -1;
+            imgKeyword = imgKeyword.toLowerCase();
+            return imgKeyword.indexOf(keyword.toLowerCase()) !== -1;
         })
     });
     renderGallery(imgs);
@@ -110,4 +126,29 @@ function getPosImg(gImgs){
     return gImgs.findIndex(function (img) {
         return img.id === gMeme.selectedImgId
     })
+}
+function mapKeywords() {
+    var allKeywords = gImgs.reduce(function (acc, img) {
+        return acc.concat(img.keywords);
+    }, [])
+
+    return allKeywords.reduce(function (acc, keyword) {
+        (!acc[keyword]) ? acc[keyword] = 1: acc[keyword]++;
+        return acc;
+    }, {});
+}
+
+function renderKeywords() {
+    var elKeywordsBox = document.querySelector('.keywords-box');
+    var keywordsMap = mapKeywords();
+    var strHtml = '';
+    for (var key in keywordsMap) {
+        strHtml += `<span style="font-size: calc(1em + ${+keywordsMap[key]*10}px)" onclick="filterImages(this.innerHTML)">${key}</span> `
+    }
+    elKeywordsBox.innerHTML += strHtml;
+}
+
+function toggleKeywordsModal() {
+    var elKeywordsModal = document.querySelector('.keywords-modal');
+    elKeywordsModal.classList.toggle('hide');
 }
