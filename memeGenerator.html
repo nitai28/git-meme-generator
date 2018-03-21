@@ -51,40 +51,29 @@
                     <div class="text-container flex flex-column">
                         <input class="meme-text-input" type="text" onkeyup="editMemeText()" placeholder="Enter text" onfocus="chooseText(0)">
                         <div class="btn-container justify-center flex">
-                            <input type="color" class="btn-color-change" onchange="changeColorText()">
-                            <button type="" class="text-shadow" onclick="toggleMemeShadow()">shadow</button>
-                            <button onclick="incDecFontSize(true)">A
-                                <i class="fas fa-plus"></i>
-                            </button>
-                            <button onclick="incDecFontSize(false)">A
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <select onchange="fontChoose()" name="" id="">
-                                <option value="Raleway"></option>
-                                <option value=""></option>
-                                <option value=""></option>
-                                <option value="Indie"></option>
+                            <input type="color" class="btn-color-change" onchange="changeColorText()"> 
+                            <button type="" class="text-shadow" onclick="toggleMemeShadow()" >shadow</button>
+                            <button onclick="incDecFontSize(true)">A<i class="fas fa-plus"></i></button>
+                            <button onclick="incDecFontSize(false)">A<i class="fas fa-minus"></i></button>
+                            <select class="font-choose" onchange="fontChoose()" name="" id="">
+                                <option value="indie-flower">indie-flower</option>
+                                <option value="mina-regular">mina-regular</option>
+                                <option value="nunito-regular">nunito-regular</option>
+                                <option value="pacifico-regular">pacifico-regular</option>
+                                <option value="raleway-regular">raleway-regular</option>
                             </select>
                             <input id="text-align-left" type="radio" name="text-align" class="align-left" onclick="changeTextAlign(event, 'left')" checked>
-                            <label for="text-align-left">
-                                <i class="fas fa-align-left"></i>
-                            </label>
-                            <input id="text-align-center" type="radio" name="text-align" class="align-center" onclick="changeTextAlign(event, 'center')"
-                            />
-                            <label for="text-align-center">
-                                <i class="fas fa-align-center"></i>
-                            </label>
-                            <input id="text-align-right" type="radio" name="text-align" class="align-right" onclick="changeTextAlign(event, 'right')"
-                            />
-                            <label for="text-align-right">
-                                <i class="fas fa-align-right"></i>
-                            </label>
+                            <label for="text-align-left"><i class="fas fa-align-left"></i></label>
+                            <input id="text-align-center" type="radio" name="text-align" class="align-center" onclick="changeTextAlign(event, 'center')" />
+                            <label for="text-align-center"><i class="fas fa-align-center"></i></label>
+                            <input id="text-align-right" type="radio" name="text-align" class="align-right" onclick="changeTextAlign(event, 'right')" />
+                            <label for="text-align-right"><i class="fas fa-align-right"></i></label>
                         </div>
                         <input class="meme-text-input" type="text" onkeyup="editMemeText()" placeholder="Enter text" onfocus="chooseText(1)">
                     </div>
                     <div>
-                        <button type="submit" class="submit-btn">Save</button>
-                    </div>
+                            <a id="download" download="canvas.png"><button type="button" onClick="download()">Download</button></a>
+                     </div>
                 </form>
             </div>
 

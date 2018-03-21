@@ -17,7 +17,8 @@ var gMeme = {
         size: 20,
         align: 'left',
         color: 'black',
-        shadow: false
+        shadow: false,
+        font:'arial'
     }]
 }
 var gCurrImg;
@@ -127,12 +128,13 @@ function renderMeme() {
     memeImg.onload = function () {
         ctx.drawImage(memeImg, 0, 0, canvas.width, canvas.height);
         gMeme.texts.forEach(function(text, idx) {
-            ctx.font = text.size+'px'+' serif';
+            ctx.font = text.size + 'px' + ' ' + text.font;
             ctx.fillStyle = '' + text.color;
             if (text.shadow) {
                 ctx.shadowBlur = 15;
                 ctx.shadowColor = '#000';
             } else ctx.shadowBlur = 0;
+            
             ctx.textAlign = text.align;
             var posX;
             if(ctx.textAlign === 'left') posX = 50;
@@ -147,7 +149,6 @@ function renderMeme() {
 function editMemeText() {
     var textIdx = gMeme.selectedTextIdx;
     var inputText = document.querySelectorAll('.meme-text-input');
-    console.log(inputText);
     gMeme.texts[textIdx].line = inputText[textIdx].value;
     renderMeme();
 
@@ -177,10 +178,6 @@ function getPosImg() {
 function toggleMemeShadow() {
     var textIdx = gMeme.selectedTextIdx;
     gMeme.texts[textIdx].shadow = (gMeme.texts[textIdx].shadow) ? false :  true;
-    renderMeme();
-}
-function toggleMemeShadow() {
-    (gMeme.texts[0].shadow) ? gMeme.texts[0].shadow = false : gMeme.texts[0].shadow = true;
     renderMeme();
 }
 
@@ -217,4 +214,19 @@ function changeTextAlign(event, align) {
         gMeme.texts[textIdx].align = 'center';
     }
     renderMeme();
+}
+
+function fontChoose(){
+    var font=document.querySelector('.font-choose').value;
+    gMeme.texts[0].font=font;
+    console.log(gMeme.texts[0].font);
+    renderMeme();
+}
+
+function download(){
+    var download = document.getElementById("download");
+    var image = document.getElementById("meme-canvas").toDataURL("image/png")
+                .replace("image/png", "image/octet-stream");
+          download.setAttribute("href", image);
+        
 }
