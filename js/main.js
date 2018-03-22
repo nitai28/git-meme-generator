@@ -244,7 +244,7 @@ function sendEmail() {
 
 function addLine() {
 
-    var lastPosY = (gMeme.texts[gMeme.texts.length - 1].posY) - 100;
+    var lastPosY = (gMeme.texts[gMeme.texts.length - 1].posY) - 50;
     if (gMeme.texts.length < 4) {
         gMeme.texts.push({
             line: 'I never eat Falafel',
@@ -267,7 +267,7 @@ function renderInputLine() {
         strHtml += `
         <div class="flex justify-content align-center">
             <button class="remove" onclick="removeLine(${i},this)"><i class="far fa-trash-alt fa-2x"></i></button>
-            <input class="meme-text-input" type="text" onkeyup="editMemeText()" placeholder="Enter text" onfocus="chooseText(${gMeme.texts.length})">
+            <input class="meme-text-input" type="text" onkeyup="editMemeText()" placeholder="Enter text" onfocus="chooseText(${i})">
         </div>
         `;
     }
