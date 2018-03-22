@@ -26,17 +26,17 @@
             <div class="navbar-container space-between">
                 <ul class="flex justify-center align-center space-between">
                     <li class="justify-center">
-                        <a href="#">Gallery</a>
+                        <a href="#gallery">Gallery</a>
                     </li>
                     <li class="justify-center">
-                        <a href="#">About</a>
+                        <a href="#about">About</a>
                     </li>
                     <img class="logo-pic" src="img/l1.png">
                     <li class="justify-center">
                         <a href="#">Blog</a>
                     </li>
                     <li class="justify-center">
-                        <a href="#">Contact</a>
+                        <a href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -105,7 +105,7 @@
             </div>
 
         </section>
-        <section class="gallery page1">
+        <section id="gallery" class="gallery page1">
             <h1>Choose a picture</h1>
             <div>
                 <input type="search" id="search" name="search" onkeyup="filterImages(this.value)" placeholder="Enter image keyword">
@@ -115,7 +115,7 @@
 
             </div>
         </section>
-        <section class="about page1">
+        <section id="about" class="about page1">
             <div class="container flex">
                 <div class="about-item flex flex-row-reverse align-center space-around">
                     <div class="about-pic nitai-pic"></div>
@@ -166,7 +166,7 @@
             </div>
         </section>
     </main>
-    <footer class="contact">
+    <footer id="contact" class="contact">
         <form class="contact-us flex justify-center align-center flex-column space-around">
             <h2>Contact-Us</h2>
             <input class="input-name" type="text" required placeholder="Name (Required)">
