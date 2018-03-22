@@ -12,15 +12,26 @@
 </head>
 
 <body onload="init()">
-    <div class="keywords-modal hide flex justify-center align-center">
+    <div class="keywords-modal modal hide flex justify-center align-center">
         <div class="keywords-box flex justify-center align-center flex-wrap justify-content">
             <button class="clear-btn" onclick="toggleKeywordsModal()">
                 <i class="fas fa-times fa-4x"></i>
             </button>
         </div>
     </div>
+    <div class="upload-modal modal flex justify-center align-center hide">
+        <div class="upload-box flex justify-center align-center flex-wrap justify-content">
+            <button class="clear-btn" onclick="toggleUploadModal()">
+                <i class="fas fa-times fa-4x"></i>
+            </button>
+            <input type="file" onchange="previewImage()">
+            <br>
+            <img src="" height="200">
+            <button onclick="uploadImage()">UPLOAD</button>
+        </div>
+    </div>
     <header>
-        <h1 class=logo>Meme Generator</h1>
+        <a href="https://nitai28.github.io/git-meme-generator/memeGenerator.html" target="_blank"><h1 class=logo>Meme Generator</h1></a>
         <nav class="flex justify-center space-between">
             <div></div> <!-- FICTIVE DIV -->
             <div class="navbar-container space-between">
@@ -112,7 +123,6 @@
                 <button class="key-btn" onclick="toggleKeywordsModal()">Keywords List</button>
             </div>
             <div class="gallery-grid">
-
             </div>
         </section>
         <section id="about" class="about page1">
@@ -128,13 +138,13 @@
                             accusantium magni, doloribus culpa earum magnam blanditiis aperiam dignissimos mollitia doloremque
                             possimus, consectetur modi corporis?</p>
                         <div class="social social-nitai flex space-between">
-                            <a href="#" class="facebook flex justify-center align-center">
+                            <a href="https://www.facebook.com/nitai.shavit" target="_blank" class="facebook flex justify-center align-center">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a href="#" class="twitter flex justify-center align-center">
+                            <a href="https://www.linkedin.com/in/nitai-shavit-534b788b/" target="_blank" class="linkedin flex justify-center align-center">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
-                            <a href="#" class="behance flex justify-center align-center">
+                            <a href="https://github.com/nitai28" target="_blank" class="github flex justify-center align-center">
                                 <i class="fab fa-github"></i>
                             </a>
                         </div>
@@ -151,13 +161,13 @@
                             accusantium magni, doloribus culpa earum magnam blanditiis aperiam dignissimos mollitia doloremque
                             possimus, consectetur modi corporis?</p>
                         <div class="social social-itay flex space-between">
-                            <a href="#" class="facebook flex justify-center align-center">
+                            <a href="https://www.facebook.com/ItayBenShmuel" target="_blank" class="facebook flex justify-center align-center">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a href="#" class="twitter flex justify-center align-center">
+                            <a href="https://www.linkedin.com/in/itay-ben-shmuel-372b5314b/" target="_blank" class="linkedin flex justify-center align-center">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
-                            <a href="#" class="behance flex justify-center align-center">
+                            <a href="https://github.com/Taytay884" target="_blank" class="github flex justify-center align-center">
                                 <i class="fab fa-github"></i>
                             </a>
                         </div>
