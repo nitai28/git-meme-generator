@@ -20,6 +20,7 @@
         </div>
     </div>
     <header>
+        <h1 class=meme-logo>Meme Generator</h1>
         <nav>
             <div class="navbar-container">
                 <ul class="flex justify-center space-between ">
@@ -29,6 +30,7 @@
                     <li class="justify-center">
                         <a href="#">About</a>
                     </li>
+                    <img class="meme-pic" src="img/l1.png">
                     <li class="justify-center">
                         <a href="#">Blog</a>
                     </li>
@@ -47,14 +49,18 @@
             </canvas>
 
             <div>
-                <form onsubmit="return false;" class="edit-pic flex space-between flex-column">
+                <form onsubmit="return false;" class="edit-pic flex space-between flex-wrap flex-column">
                     <div class="text-container flex flex-column">
                         <input class="meme-text-input" type="text" onkeyup="editMemeText()" placeholder="Enter text" onfocus="chooseText(0)">
-                        <div class="btn-container justify-center flex">
-                            <input type="color" class="btn-color-change" onchange="changeColorText()"> 
-                            <button type="" class="text-shadow" onclick="toggleMemeShadow()" >shadow</button>
-                            <button onclick="incDecFontSize(true)">A<i class="fas fa-plus"></i></button>
-                            <button onclick="incDecFontSize(false)">A<i class="fas fa-minus"></i></button>
+                        <div class="btn-container justify-center flex flex-wrap">
+                            <input type="color" class="btn-color-change" onchange="changeColorText()">
+                            <button type="" class="text-shadow" onclick="toggleMemeShadow()">shadow</button>
+                            <button onclick="incDecFontSize(true)">A
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <button class=".ph-button" onclick="incDecFontSize(false)">A
+                                <i class="fas fa-minus"></i>
+                            </button>
                             <select class="font-choose" onchange="fontChoose()" name="" id="">
                                 <option value="indie-flower">indie-flower</option>
                                 <option value="mina-regular">mina-regular</option>
@@ -63,17 +69,27 @@
                                 <option value="raleway-regular">raleway-regular</option>
                             </select>
                             <input id="text-align-left" type="radio" name="text-align" class="align-left" onclick="changeTextAlign(event, 'left')" checked>
-                            <label for="text-align-left"><i class="fas fa-align-left"></i></label>
-                            <input id="text-align-center" type="radio" name="text-align" class="align-center" onclick="changeTextAlign(event, 'center')" />
-                            <label for="text-align-center"><i class="fas fa-align-center"></i></label>
-                            <input id="text-align-right" type="radio" name="text-align" class="align-right" onclick="changeTextAlign(event, 'right')" />
-                            <label for="text-align-right"><i class="fas fa-align-right"></i></label>
+                            <label for="text-align-left">
+                                <i class="fas fa-align-left"></i>
+                            </label>
+                            <input id="text-align-center" type="radio" name="text-align" class="align-center" onclick="changeTextAlign(event, 'center')"
+                            />
+                            <label for="text-align-center">
+                                <i class="fas fa-align-center"></i>
+                            </label>
+                            <input id="text-align-right" type="radio" name="text-align" class="align-right" onclick="changeTextAlign(event, 'right')"
+                            />
+                            <label for="text-align-right">
+                                <i class="fas fa-align-right"></i>
+                            </label>
                         </div>
                         <input class="meme-text-input" type="text" onkeyup="editMemeText()" placeholder="Enter text" onfocus="chooseText(1)">
                     </div>
                     <div>
-                            <a id="download" download="canvas.png"><button type="button" onClick="download()">Download</button></a>
-                     </div>
+                        <a id="download" download="canvas.png">
+                            <button type="button" onClick="download()">Download</button>
+                        </a>
+                    </div>
                 </form>
             </div>
 
@@ -82,7 +98,7 @@
             <h1>Choose a picture</h1>
             <div>
                 <input type="search" id="search" name="search" onkeyup="filterImages(this.value)" placeholder="Enter image keyword">
-                <button onclick="toggleKeywordsModal()">Keywords List</button>
+                <button class="key-btn" onclick="toggleKeywordsModal()">Keywords List</button>
             </div>
             <div class="gallery-grid">
 
