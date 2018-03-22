@@ -12,13 +12,13 @@ var gMeme = {
         color: 'black',
         shadow: false
     }
-    ,{
+        , {
         line: 'I never eat Falafel',
         size: 20,
         align: 'left',
         color: 'black',
         shadow: false,
-        font:'arial'
+        font: 'arial'
     }]
 }
 var gCurrImg;
@@ -85,7 +85,7 @@ function mapKeywords() {
     }, [])
 
     return allKeywords.reduce(function (acc, keyword) {
-        (!acc[keyword]) ? acc[keyword] = 1: acc[keyword]++;
+        (!acc[keyword]) ? acc[keyword] = 1 : acc[keyword]++;
         return acc;
     }, {});
 }
@@ -95,7 +95,7 @@ function renderKeywords() {
     var keywordsMap = mapKeywords();
     var strHtml = '';
     for (var key in keywordsMap) {
-        strHtml += `<span style="font-size: calc(1em + ${+keywordsMap[key]*10}px)" onclick="filterImages(this.innerHTML)">${key}</span> `
+        strHtml += `<span style="font-size: calc(1em + ${+keywordsMap[key] * 10}px)" onclick="filterImages(this.innerHTML)">${key}</span> `
     }
     elKeywordsBox.innerHTML += strHtml;
 }
@@ -127,19 +127,19 @@ function renderMeme() {
     canvas.width = memeImg.width;
     memeImg.onload = function () {
         ctx.drawImage(memeImg, 0, 0, canvas.width, canvas.height);
-        gMeme.texts.forEach(function(text, idx) {
+        gMeme.texts.forEach(function (text, idx) {
             ctx.font = text.size + 'px' + ' ' + text.font;
             ctx.fillStyle = '' + text.color;
             if (text.shadow) {
                 ctx.shadowBlur = 15;
                 ctx.shadowColor = '#000';
             } else ctx.shadowBlur = 0;
-            
+
             ctx.textAlign = text.align;
             var posX;
-            if(ctx.textAlign === 'left') posX = 50;
-            else if(ctx.textAlign === 'center') posX = canvas.width/2;
-            else if(ctx.textAlign === 'right') posX = canvas.width-50;
+            if (ctx.textAlign === 'left') posX = 50;
+            else if (ctx.textAlign === 'center') posX = canvas.width / 2;
+            else if (ctx.textAlign === 'right') posX = canvas.width - 50;
             var posY = (idx === 0) ? 100 : canvas.height - 100; // JUST FOR NOW!
             ctx.fillText(text.line, posX, posY);
         });
@@ -177,7 +177,7 @@ function getPosImg() {
 
 function toggleMemeShadow() {
     var textIdx = gMeme.selectedTextIdx;
-    gMeme.texts[textIdx].shadow = (gMeme.texts[textIdx].shadow) ? false :  true;
+    gMeme.texts[textIdx].shadow = (gMeme.texts[textIdx].shadow) ? false : true;
     renderMeme();
 }
 
@@ -196,37 +196,48 @@ function toggleKeywordsModal() {
     elKeywordsModal.classList.toggle('hide');
 }
 
-function incDecFontSize(inc){
+function incDecFontSize(inc) {
     var textIdx = gMeme.selectedTextIdx;
-    (inc)?  gMeme.texts[textIdx].size+=4: gMeme.texts[0].size-=4;
+    (inc) ? gMeme.texts[textIdx].size += 4 : gMeme.texts[0].size -= 4;
     renderMeme();
 }
 
 function changeTextAlign(event, align) {
     var textIdx = gMeme.selectedTextIdx;
-    if(align === 'left') {
+    if (align === 'left') {
         gMeme.texts[textIdx].align = 'left';
     }
-    else if(align === 'right') {
+    else if (align === 'right') {
         gMeme.texts[textIdx].align = 'right';
     }
-    else if(align === 'center') {
+    else if (align === 'center') {
         gMeme.texts[textIdx].align = 'center';
     }
     renderMeme();
 }
 
-function fontChoose(){
-    var font=document.querySelector('.font-choose').value;
-    gMeme.texts[0].font=font;
+function fontChoose() {
+    var font = document.querySelector('.font-choose').value;
+    gMeme.texts[0].font = font;
     console.log(gMeme.texts[0].font);
     renderMeme();
 }
 
-function download(){
+function download() {
     var download = document.getElementById("download");
     var image = document.getElementById("meme-canvas").toDataURL("image/png")
-                .replace("image/png", "image/octet-stream");
-          download.setAttribute("href", image);
-        
+        .replace("image/png", "image/octet-stream");
+    download.setAttribute("href", image);
+
 }
+function sendEmail() {
+    var email = document.querySelector('.email').value;
+    var subject = document.querySelector('.subject').value;
+    var name = document.querySelector('.input-name').value;
+    var message = document.querySelector('.text-message').value;
+    subject += ' ' + email +' '+name;
+    var strUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=Taytay884@yahoo.com&su=' + subject + '&body=' + message + '';
+    window.open(strUrl);
+}
+
+

@@ -156,7 +156,14 @@
         </section>
     </main>
     <footer class="contact">
-
+        <form class="contact-us flex justify-center align-center flex-column space-around" >
+            <h2>Contact-Us</h2>
+            <input class="input-name" type="text" required placeholder="Name (Required)">
+            <input class="email" type="email" required placeholder="Email (Required)">
+            <input class="subject" type="text" placeholder="Subject">
+            <input class="text-message" type="text" placeholder="Write your message here...">
+            <button class="submit-btn " onclick="sendEmail()" type="submit">SEND</button>
+        </form>
     </footer>
     <script src="js/main.js"></script>
 </body>

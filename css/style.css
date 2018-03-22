@@ -240,9 +240,9 @@ nav {
 
 nav .logo-pic {
     background-size: cover;
+    height: 133.33px;
     width: 126.33px;
     overflow-y: visible;
-    height: 133.33px;
 }
 
 form {
@@ -286,10 +286,18 @@ form {
 
 .gallery-grid {
     display: grid;
-    width: 98vw;
+    width: 100vw;
+    max-width:100%;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: 180px;
     grid-gap: 10px;
+    margin-bottom: 50px;
+    margin-left: 20px;
+}
+
+.page1{
+    margin: 0 auto;
+    text-align: center;
 }
 
 .gallery-grid div {
@@ -437,9 +445,7 @@ section.gallery {
     margin-right: 5px;
 }
 
-.submit-btn {
-    flex-grow: 1;
-}
+
 
 input[type="search"] {
     margin-top: 20px;
@@ -499,7 +505,44 @@ select {
     text-decoration: none;
     text-overflow: ellipsis;
     transition: all 200ms ease-in-out 0s;
-    white-space: nowrap;
-    font-family: "Gotham Rounded A", "Gotham Rounded ;
+    white-space: nowrap;	
+    font-family: "Gotham Rounded A","Gotham Rounded ;
+}
 
+.contact-us{
+    width: 100vw;
+    max-width:100%;
+    height: 564px;
+    background-color: #071013 ;
+}
+
+.input-name, .email, .subject{
+    width: 35%;;
+    height: 8%;
+    background-color: #FFFDEF;
+    color: #AF9238;
+    font-size: 20px;
+    }
+
+
+ .text-message{
+    width: 35%;
+    height: 20%;
+    background-color: #FFFDEF;
+    color: #AF9238;
+    font-size: 20px;
+    
+ }   
+ .submit-btn{
+     width: 15%;
+     height:8%;
+ }
+
+ form h2{
+     color:#AF9238;
+     font-family: pacifico-regular;
+    }
+
+footer form{
+    margin-top: 5%;
 }
