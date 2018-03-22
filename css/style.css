@@ -53,6 +53,7 @@ h3,
 h4,
 h5,
 p,
+ul,
 a {
     margin: 0;
 }
@@ -181,22 +182,14 @@ nav {
     font-family: pacifico-regular;
 }
 
-.navbar-container {
-    height: 100%;
-}
-
 .navbar-container ul {
-    margin: 0 auto;
-    width: 50%;
     height: 100%;
 }
 
 .navbar-container ul li {
-    /* background-color: red; */
     list-style-type: none;
-    height: 100%;
     padding: 20px;
-    position: relative;
+    height: 100%;
     width: 120px;
 }
 
@@ -232,7 +225,7 @@ nav {
 
 .meme-gen {
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     /* background-color: rgba(10, 10, 10, 0.548); */
     background: rgba(175, 145, 56, 0.514);
     position: relative;
@@ -240,6 +233,7 @@ nav {
 
 nav .logo-pic {
     background-size: cover;
+    margin-top: 40px;
     height: 133.33px;
     width: 126.33px;
     overflow-y: visible;
@@ -257,6 +251,7 @@ form {
     position: absolute;
     height: 100vh;
     width: 100vw;
+    max-width: 100%;
     background-color: rgba(49, 49, 49, 0.714);
 }
 
@@ -287,15 +282,14 @@ form {
 .gallery-grid {
     display: grid;
     width: 100vw;
-    max-width:100%;
+    max-width: 100%;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: 180px;
     grid-gap: 10px;
     margin-bottom: 50px;
-    margin-left: 20px;
 }
 
-.page1{
+.page1 {
     margin: 0 auto;
     text-align: center;
 }
@@ -318,7 +312,8 @@ section.gallery {
 /* About */
 
 .about {
-    width: 100%;
+    width: 100vw;
+    max-width: 100%;
     height: 21.875rem;
     /* #AF9238 */
     background: rgba(175, 145, 56, 0.815);
@@ -346,7 +341,8 @@ section.gallery {
 .about-pic {
     background-size: cover;
     width: 250px;
-    height: 70%;
+    height: 30vh;
+    max-height: 100%;
 }
 
 .about-info {
@@ -391,6 +387,8 @@ section.gallery {
 .nitai-pic {
     background-image: url("../img/nitai.jpg");
 }
+
+/* Meme-Editor */
 
 .hide {
     display: none;
@@ -444,8 +442,6 @@ section.gallery {
 .btn-container button {
     margin-right: 5px;
 }
-
-
 
 input[type="search"] {
     margin-top: 20px;
@@ -505,44 +501,194 @@ select {
     text-decoration: none;
     text-overflow: ellipsis;
     transition: all 200ms ease-in-out 0s;
-    white-space: nowrap;	
-    font-family: "Gotham Rounded A","Gotham Rounded ;
+    white-space: nowrap;
+    font-family: "Gotham Rounded A", "Gotham Rounded ;
+
 }
 
-.contact-us{
+.contact-us {
     width: 100vw;
-    max-width:100%;
+    max-width: 100%;
     height: 564px;
-    background-color: #071013 ;
+    background-color: #071013;
 }
 
-.input-name, .email, .subject{
-    width: 35%;;
+.input-name,
+.email,
+.subject {
+    width: 45%;
     height: 8%;
     background-color: #FFFDEF;
     color: #AF9238;
     font-size: 20px;
-    }
+}
 
-
- .text-message{
+.text-message {
     width: 35%;
     height: 20%;
     background-color: #FFFDEF;
     color: #AF9238;
     font-size: 20px;
-    
- }   
- .submit-btn{
-     width: 15%;
-     height:8%;
- }
+}
 
- form h2{
-     color:#AF9238;
-     font-family: pacifico-regular;
+.submit-btn {
+    width: 15%;
+    height: 8%;
+}
+
+form h2 {
+    color: #AF9238;
+    font-family: pacifico-regular;
+}
+
+@media (max-width: 1200px) {
+    /* header */
+    .fictive-div {
+        display: none;
     }
+    .logo-pic {
+        display: none;
+    }
+    .hamburger {
+        display: inline;
+        align-self: center;
+        color: #fffdef;
+        margin-right: 20px;
+    }
+    header.menu-opened {
+        margin-bottom: 300px;
+        position: relative;
+    }
+    .navbar-container {
+        display: none;
+        overflow: hidden;
+        flex-direction: column;
+        background: #071013;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+    }
+    .show {
+        display: block;
+    }
+    .navbar-container ul {
+        padding: 0px;
+        height: 100%;
+        flex-direction: column;
+        width: 100%;
+    }
+    .navbar-container li {
+        position: relative;
+    }
+    .about {
+        width: 100vw;
+        max-width: 100%;
+        height: 100%;
+    }
+    .about-item:first-child {
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.342);
+    }
+    .about-item:last-child {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.342);
+    }
+    .about .container {
+        flex-direction: column;
+    }
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 40vh;
+        grid-auto-rows: 40vh;
+    }
+}
 
-footer form{
-    margin-top: 5%;
+@media (max-width: 920px) {
+    /* Gallery - Grid */
+    .gallery-grid {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: 50vh;
+        grid-auto-rows: 50vh;
+    }
+    @media (min-width: 600px) {
+        .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 40vh;
+            grid-auto-rows: 40vh;
+        }
+    }
+    .btn-close-gallery {
+        top: 2%;
+        right: 2%;
+    }
+    .meme-gen {
+        padding: 50px 0;
+        flex-direction: column;
+        margin: 0;
+    }
+    .edit-pic {
+        width: 90vw;
+        max-width: 100%;
+    }
+    section.gallery {
+        margin-bottom: 50px;
+    }
+    /* about */
+    .about {
+        width: 100vw;
+        max-width: 100%;
+        height: 100%;
+    }
+    .about .container {
+        flex-direction: column;
+    }
+    .about-item {
+        /* height: 100%; */
+        flex-direction: column;
+    }
+    .about-item:first-child {
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.342);
+    }
+    .about-item:last-child {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.342);
+    }
+    .about-info h2 {
+        font-size: 1.7em;
+    }
+    .about-info h4 {
+        font-size: 1.3em;
+        color: rgba(255, 253, 239, 0.815);
+    }
+    .about-info p {
+        font-size: 1.125rem;
+    }
+    .social {
+        width: 60px;
+    }
+    .social-itay {
+        align-self: flex-end;
+    }
+    .social a {
+        color: #001B33;
+    }
+    .social a:hover {
+        color: #FFFDEF;
+    }
+    .itay-pic {
+        background-image: url("../img/itay.jpg");
+    }
+    .nitai-pic {
+        background-image: url("../img/nitai.jpg");
+    }
+    /* Contact */
+    .input-name,
+    .email,
+    .subject {
+        width: 80%;
+    }
+    .text-message {
+        width: 90%;
+    }
 }

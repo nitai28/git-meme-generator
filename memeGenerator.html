@@ -21,9 +21,10 @@
     </div>
     <header>
         <h1 class=logo>Meme Generator</h1>
-        <nav>
-            <div class="navbar-container">
-                <ul class="flex justify-center space-between ">
+        <nav class="flex justify-center space-between">
+            <div></div> <!-- FICTIVE DIV -->
+            <div class="navbar-container space-between">
+                <ul class="flex justify-center align-center space-between">
                     <li class="justify-center">
                         <a href="#">Gallery</a>
                     </li>
@@ -39,7 +40,10 @@
                     </li>
                 </ul>
             </div>
+            <i class="hamburger fas fa-bars fa-3x hide" onclick="toggleMenu(this)"></i>
+            <div class="fictive-div">
 
+            </div>
         </nav>
     </header>
     <main>
@@ -156,7 +160,7 @@
         </section>
     </main>
     <footer class="contact">
-        <form class="contact-us flex justify-center align-center flex-column space-around" >
+        <form class="contact-us flex justify-center align-center flex-column space-around">
             <h2>Contact-Us</h2>
             <input class="input-name" type="text" required placeholder="Name (Required)">
             <input class="email" type="email" required placeholder="Email (Required)">

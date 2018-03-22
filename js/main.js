@@ -18,7 +18,8 @@ var gMeme = {
         align: 'left',
         color: 'black',
         shadow: false,
-        font: 'arial'
+        font: 'arial',
+        posY: '300'
     }]
 }
 var gCurrImg;
@@ -124,6 +125,7 @@ function renderMeme() {
     var memeImg = new Image();
     memeImg.src = img.url;
     canvas.height = memeImg.height;
+    gMeme.texts[1].posY = canvas.height-100;
     canvas.width = memeImg.width;
     memeImg.onload = function () {
         ctx.drawImage(memeImg, 0, 0, canvas.width, canvas.height);
@@ -198,7 +200,7 @@ function toggleKeywordsModal() {
 
 function incDecFontSize(inc) {
     var textIdx = gMeme.selectedTextIdx;
-    (inc) ? gMeme.texts[textIdx].size += 4 : gMeme.texts[0].size -= 4;
+    (inc) ? gMeme.texts[textIdx].size += 4 : gMeme.texts[textIdx].size -= 4;
     renderMeme();
 }
 
@@ -240,4 +242,9 @@ function sendEmail() {
     window.open(strUrl);
 }
 
-
+function toggleMenu(){
+    var elNavbar = document.querySelector('.navbar-container');
+    elNavbar.classList.toggle('show');
+    var elHeader = document.querySelector('header');
+    elHeader.classList.toggle('menu-opened');
+}
