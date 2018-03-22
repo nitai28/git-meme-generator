@@ -12,8 +12,7 @@ var gMeme = {
         align: 'left',
         color: 'black',
         shadow: false
-    }
-        , {
+    }, {
         posY: 500,
         line: 'I never eat Falafel',
         size: 20,
@@ -44,10 +43,12 @@ function init() {
 
 
 function renderGallery(imgs) {
-    var elGrid = document.querySelector('.gallery-grid'); var strHtml = '';
+    var elGrid = document.querySelector('.gallery-grid');
     var strHtml = '';
+    var strHtml = '<button onclick="toggleUploadModal()"><i class="far fa-plus-square fa-11x"></i></button></div>';
     imgs.forEach(function (img, idx) {
-        strHtml += `<div 
+        strHtml += `
+        <div 
         style="background-image:url(${img.url})" 
         data-id="${img.id}" onclick="chooseImg(${img.id}); openGallery();" class="meme-pic"
         ></div>
@@ -88,7 +89,7 @@ function mapKeywords() {
     }, [])
 
     return allKeywords.reduce(function (acc, keyword) {
-        (!acc[keyword]) ? acc[keyword] = 1 : acc[keyword]++;
+        (!acc[keyword]) ? acc[keyword] = 1: acc[keyword]++;
         return acc;
     }, {});
 }
@@ -106,6 +107,11 @@ function renderKeywords() {
 function toggleKeywordsModal() {
     var elKeywordsModal = document.querySelector('.keywords-modal');
     elKeywordsModal.classList.toggle('hide');
+}
+
+function toggleUploadModal() {
+    var elUploadModal = document.querySelector('.upload-modal');
+    elUploadModal.classList.toggle('hide');
 }
 
 // ##### Meme Editor #####
@@ -201,7 +207,7 @@ function toggleKeywordsModal() {
 
 function incDecFontSize(inc) {
     var textIdx = gMeme.selectedTextIdx;
-    (inc) ? gMeme.texts[textIdx].size += 4 : gMeme.texts[textIdx].size -= 4;
+    (inc) ? gMeme.texts[textIdx].size += 4: gMeme.texts[textIdx].size -= 4;
     renderMeme();
 }
 
@@ -209,11 +215,9 @@ function changeTextAlign(event, align) {
     var textIdx = gMeme.selectedTextIdx;
     if (align === 'left') {
         gMeme.texts[textIdx].align = 'left';
-    }
-    else if (align === 'right') {
+    } else if (align === 'right') {
         gMeme.texts[textIdx].align = 'right';
-    }
-    else if (align === 'center') {
+    } else if (align === 'center') {
         gMeme.texts[textIdx].align = 'center';
     }
     renderMeme();
@@ -233,6 +237,7 @@ function download() {
     download.setAttribute("href", image);
 
 }
+
 function sendEmail() {
     var email = document.querySelector('.email').value;
     var subject = document.querySelector('.subject').value;
@@ -243,12 +248,13 @@ function sendEmail() {
     window.open(strUrl);
 }
 
-function toggleMenu(){
+function toggleMenu() {
     var elNavbar = document.querySelector('.navbar-container');
     elNavbar.classList.toggle('show');
     var elHeader = document.querySelector('header');
     elHeader.classList.toggle('menu-opened');
 }
+
 function addLine() {
 
     var lastPosY = (gMeme.texts[gMeme.texts.length - 1].posY) - 50;
@@ -281,6 +287,34 @@ function renderInputLine() {
 }
 
 function removeLine(index, button) {
-    gMeme.texts.splice(index,1);
+    gMeme.texts.splice(index, 1);
     renderInputLine();
+}
+
+
+var gCurrUploadImg;
+
+function previewImage() {
+    var preview = document.querySelector('img'); //selects the query named img
+    var file = document.querySelector('input[type=file]').files[0]; //sames as here
+    var reader = new FileReader();
+
+    reader.onloadend = function () {
+        gCurrUploadImg = reader.result;
+        preview.src = gCurrUploadImg;
+    }
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = "";
+    }
+}
+
+function uploadImage() {
+    if(!gCurrUploadImg) return;
+    addImg(gCurrUploadImg);
+    renderGallery(gImgs);
+    toggleUploadModal();
+    gCurrUploadImg = '';
 }
