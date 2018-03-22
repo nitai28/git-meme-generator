@@ -1,26 +1,29 @@
 /* ----- Fonts ----- */
-@font-face{
+
+@font-face {
     font-family: indie-flower;
-    src:url('../fonts/IndieFlower.ttf');
+    src: url('../fonts/IndieFlower.ttf');
 }
-@font-face{
+
+@font-face {
     font-family: mina-regular;
-    src: url('../fonts/Mina-Regular.ttf'), 
+    src: url('../fonts/Mina-Regular.ttf'),
 }
-@font-face{
+
+@font-face {
     font-family: nunito-regular;
-    src:url('../fonts/Nunito-Regular.ttf');
+    src: url('../fonts/Nunito-Regular.ttf');
 }
-@font-face{
+
+@font-face {
     font-family: pacifico-regular;
-    src:url('../fonts/Pacifico-Regular.ttf');
+    src: url('../fonts/Pacifico-Regular.ttf');
 }
-@font-face{
+
+@font-face {
     font-family: raleway-regular;
-    src:url('../fonts/Raleway-Regular.ttf');
+    src: url('../fonts/Raleway-Regular.ttf');
 }
-
-
 
 /* ----- Globals ----- */
 
@@ -53,7 +56,8 @@ p,
 a {
     margin: 0;
 }
-h1{
+
+h1 {
     font-size: 40px;
 }
 
@@ -167,14 +171,14 @@ main {
 nav {
     height: 100%;
 }
-.meme-logo{
+
+.logo {
     display: inline;
     color: #FFFDEF;
     position: absolute;
     left: 10px;
-    top:10px;
+    top: 10px;
     font-family: pacifico-regular;
-
 }
 
 .navbar-container {
@@ -194,7 +198,6 @@ nav {
     padding: 20px;
     position: relative;
     width: 120px;
-    
 }
 
 .navbar-container ul li a {
@@ -204,7 +207,7 @@ nav {
     align-items: center;
     justify-content: center;
     font-size: 23px;
-    color:#AF9238;
+    color: #AF9238;
 }
 
 .navbar-container li:hover::after {
@@ -220,11 +223,11 @@ nav {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f106";
-    color:#AF9238;
+    color: #AF9238;
 }
 
 .navbar-container li:hover {
-    box-shadow: inset 0px 10px 9px -6px  #AF9238;
+    box-shadow: inset 0px 10px 9px -6px #AF9238;
 }
 
 .meme-gen {
@@ -235,15 +238,17 @@ nav {
     position: relative;
 }
 
-.meme-pic{
+nav .logo-pic {
     background-size: cover;
     width: 126.33px;
     overflow-y: visible;
     height: 133.33px;
 }
-form{
+
+form {
     background: rgba(229, 200, 156, 0.801);
 }
+
 /* ----- Main ----- */
 
 /* Keywords Box */
@@ -281,15 +286,25 @@ form{
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(8,200px);
-    grid-auto-rows: 200px;
+    width: 98vw;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: 180px;
     grid-gap: 10px;
 }
 
-
-
 .gallery-grid div {
     background-size: cover;
+}
+
+.gallery-grid div:hover {
+    animation-name: bounce;
+    animation-iteration-count: infinite;
+    animation-duration: 0.7s;
+    animation-fill-mode: both;
+}
+
+section.gallery {
+    margin-bottom: 50px;
 }
 
 /* About */
@@ -299,23 +314,21 @@ form{
     height: 21.875rem;
     /* #AF9238 */
     background: rgba(175, 145, 56, 0.815);
-    box-shadow: 0px 0px 10px 0px #696969;    
+    box-shadow: 0px 0px 10px 0px #696969;
     color: #001B33;
 }
 
 .about .container {
-    padding:10px;
+    padding: 10px;
     height: 100%;
 }
 
 .about-item:first-child {
     border-right: 1px solid rgba(255, 255, 255, 0.342);
-    border-radius: 10px;
 }
 
 .about-item:last-child {
     border-left: 1px solid rgba(255, 255, 255, 0.342);
-    border-radius: 10px;
 }
 
 .about-item {
@@ -402,9 +415,8 @@ form{
     line-height: 3;
     padding-left: 8px;
     font-size: 18px;
-    
-    
 }
+
 .meme-text-input:focus {
     border: 5px solid #AF9238;
 }
@@ -429,7 +441,7 @@ form{
     flex-grow: 1;
 }
 
-input[type="search" ] {
+input[type="search"] {
     margin-top: 20px;
     margin-bottom: 10px;
     margin-right: 20px;
@@ -443,7 +455,8 @@ input[type="search" ] {
     padding-left: 8px;
     font-size: 18px;
 }
-.key-btn{
+
+.key-btn {
     background-color: #001B33;
     color: #FFFDEF;
     border: 2px solid #AF9238;
@@ -452,30 +465,31 @@ input[type="search" ] {
     margin-top: 20px;
     margin-bottom: 10px;
     margin-right: 20px;
-
 }
-button{
-    border: 2px solid #AF9238; 
+
+button {
+    border: 2px solid #AF9238;
     background-color: #001B33;
     color: #FFFDEF;
 }
-select{
-    border: 2px solid #AF9238; 
+
+select {
+    border: 2px solid #AF9238;
     background-color: #001B33;
-    color: #FFFDEF; 
+    color: #FFFDEF;
 }
-.btn-color-change{
-    border: 2px solid #AF9238; 
+
+.btn-color-change {
+    border: 2px solid #AF9238;
     background-color: #001B33;
-    color: #FFFDEF; 
+    color: #FFFDEF;
 }
 
 .ph-button {
-	
     border-style: solid;
     border-width: 0px 0px 3px;
     box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
-    color: #FFFFFF;	   
+    color: #FFFFFF;
     border-radius: 6px;
     cursor: pointer;
     display: inline-block;
@@ -485,6 +499,7 @@ select{
     text-decoration: none;
     text-overflow: ellipsis;
     transition: all 200ms ease-in-out 0s;
-    white-space: nowrap;	
-    font-family: "Gotham Rounded A","Gotham Rounded ;
+    white-space: nowrap;
+    font-family: "Gotham Rounded A", "Gotham Rounded ;
+
 }
