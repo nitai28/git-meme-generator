@@ -169,7 +169,6 @@ nav {
 }
 .meme-logo{
     display: inline;
-    width: fit-content;
     color: #FFFDEF;
     position: absolute;
     left: 10px;
@@ -296,25 +295,72 @@ form{
 /* About */
 
 .about {
-    height: 31.25rem;
+    width: 100%;
+    height: 21.875rem;
+    /* #AF9238 */
+    background: rgba(175, 145, 56, 0.815);
+    box-shadow: 0px 0px 10px 0px #696969;    
+    color: #001B33;
 }
 
 .about .container {
+    padding:10px;
     height: 100%;
-    width: 80%;
-    margin: 0 auto;
-    box-shadow: 0px 0px 10px 0px #696969;
+}
+
+.about-item:first-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.342);
+    border-radius: 10px;
+}
+
+.about-item:last-child {
+    border-left: 1px solid rgba(255, 255, 255, 0.342);
+    border-radius: 10px;
 }
 
 .about-item {
-    height: 50%;
-    background: rgb(43, 216, 37);
+    padding: 20px;
 }
 
 .about-pic {
     background-size: cover;
+    width: 250px;
+    height: 70%;
+}
+
+.about-info {
+    width: 100%;
+    padding: 20px 60px;
     height: 100%;
-    width: 200px;
+}
+
+.about-info h2 {
+    font-size: 1.7em;
+}
+
+.about-info h4 {
+    font-size: 1.3em;
+    color: rgba(255, 253, 239, 0.815);
+}
+
+.about-info p {
+    font-size: 1.125rem;
+}
+
+.social {
+    width: 60px;
+}
+
+.social-itay {
+    align-self: flex-end;
+}
+
+.social a {
+    color: #001B33;
+}
+
+.social a:hover {
+    color: #FFFDEF;
 }
 
 .itay-pic {
@@ -323,15 +369,6 @@ form{
 
 .nitai-pic {
     background-image: url("../img/nitai.jpg");
-}
-
-.about-info {
-    width: 100%;
-    text-align: center;
-}
-
-.about-info h4 {
-    margin-bottom: 1.25rem;
 }
 
 .hide {
