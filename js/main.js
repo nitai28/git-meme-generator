@@ -6,6 +6,7 @@ var gMeme = {
     selectedImgId: 5,
     selectedTextIdx: 0,
     texts: [{
+        posY: 100,
         line: 'I never eat Falafel',
         size: 20,
         align: 'left',
@@ -13,6 +14,7 @@ var gMeme = {
         shadow: false
     }
         , {
+        posY: 500,
         line: 'I never eat Falafel',
         size: 20,
         align: 'left',
@@ -124,6 +126,7 @@ function renderMeme() {
     var memeImg = new Image();
     memeImg.src = img.url;
     canvas.height = memeImg.height;
+    gMeme.texts[1].posY = canvas.height - 100;
     canvas.width = memeImg.width;
     memeImg.onload = function () {
         ctx.drawImage(memeImg, 0, 0, canvas.width, canvas.height);
@@ -140,8 +143,7 @@ function renderMeme() {
             if (ctx.textAlign === 'left') posX = 50;
             else if (ctx.textAlign === 'center') posX = canvas.width / 2;
             else if (ctx.textAlign === 'right') posX = canvas.width - 50;
-            var posY = (idx === 0) ? 100 : canvas.height - 100; // JUST FOR NOW!
-            ctx.fillText(text.line, posX, posY);
+            ctx.fillText(text.line, posX, text.posY);
         });
     }
 }
@@ -198,7 +200,7 @@ function toggleKeywordsModal() {
 
 function incDecFontSize(inc) {
     var textIdx = gMeme.selectedTextIdx;
-    (inc) ? gMeme.texts[textIdx].size += 4 : gMeme.texts[0].size -= 4;
+    (inc) ? gMeme.texts[textIdx].size += 4 : gMeme.texts[textIdx].size -= 4;
     renderMeme();
 }
 
@@ -235,9 +237,44 @@ function sendEmail() {
     var subject = document.querySelector('.subject').value;
     var name = document.querySelector('.input-name').value;
     var message = document.querySelector('.text-message').value;
-    subject += ' ' + email +' '+name;
+    subject += ' ' + email + ' ' + name;
     var strUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=Taytay884@yahoo.com&su=' + subject + '&body=' + message + '';
     window.open(strUrl);
 }
 
+function addLine() {
 
+    var lastPosY = (gMeme.texts[gMeme.texts.length - 1].posY) - 100;
+    if (gMeme.texts.length < 4) {
+        gMeme.texts.push({
+            line: 'I never eat Falafel',
+            size: 20,
+            align: 'left',
+            color: 'black',
+            shadow: false,
+            font: 'arial',
+            posY: lastPosY
+        });
+        renderInputLine();
+    }
+}
+
+
+function renderInputLine() {
+    var input = document.querySelector('.input-add');
+    var strHtml = '';
+    for (var i = 2; i < gMeme.texts.length; i++) {
+        strHtml += `
+        <div class="flex justify-content align-center">
+            <button class="remove" onclick="removeLine(${i},this)"><i class="far fa-trash-alt fa-2x"></i></button>
+            <input class="meme-text-input" type="text" onkeyup="editMemeText()" placeholder="Enter text" onfocus="chooseText(${gMeme.texts.length})">
+        </div>
+        `;
+    }
+    input.innerHTML = strHtml;
+}
+
+function removeLine(index, button) {
+    gMeme.texts.splice(index,1);
+    renderInputLine();
+}

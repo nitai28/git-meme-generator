@@ -85,6 +85,13 @@
                         </div>
                         <input class="meme-text-input" type="text" onkeyup="editMemeText()" placeholder="Enter text" onfocus="chooseText(1)">
                     </div>
+
+                    <div>
+                        <button onclick="addLine()">Add Line</button>
+                        <div class="input-add"> 
+
+                        </div>
+                    </div>
                     <div>
                         <a id="download" download="canvas.png">
                             <button type="button" onClick="download()">Download</button>
@@ -156,7 +163,7 @@
         </section>
     </main>
     <footer class="contact">
-        <form class="contact-us flex justify-center align-center flex-column space-around" >
+        <form class="contact-us flex justify-center align-center flex-column space-around">
             <h2>Contact-Us</h2>
             <input class="input-name" type="text" required placeholder="Name (Required)">
             <input class="email" type="email" required placeholder="Email (Required)">
