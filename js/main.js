@@ -266,7 +266,6 @@ function addLine() {
     }
 }
 
-
 function renderInputLine() {
     var input = document.querySelector('.input-add');
     var strHtml = '';
@@ -274,7 +273,7 @@ function renderInputLine() {
         strHtml += `
         <div class="flex justify-content align-center">
             <button class="remove" onclick="removeLine(${i},this)"><i class="far fa-trash-alt fa-2x"></i></button>
-            <input class="meme-text-input" type="text" onkeyup="editMemeText()" placeholder="Enter text" onfocus="chooseText(${i})">
+            <input class="meme-text-input" value="${gMeme.texts[i].line}" type="text" onkeyup="editMemeText()" placeholder="Enter text" onfocus="chooseText(${i})">
         </div>
         `;
     }
