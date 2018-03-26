@@ -8,22 +8,23 @@ var gMeme = {
     texts: [{
         posY: 100,
         line: 'I never eat Falafel',
-        size: 20,
+        size: 25,
         align: 'left',
         color: 'black',
-        shadow: false
+        shadow: false,
+        font: 'arial',
     }, {
-        posY: 500,
+        posY: 150,
         line: 'I never eat Falafel',
         size: 20,
         align: 'left',
         color: 'black',
         shadow: false,
         font: 'arial',
-        posY: '300'
     }]
 }
 var gCurrImg;
+var gCurrUploadImg;
 
 function init() {
     gNextId = 1;
@@ -89,7 +90,7 @@ function mapKeywords() {
     }, [])
 
     return allKeywords.reduce(function (acc, keyword) {
-        (!acc[keyword]) ? acc[keyword] = 1: acc[keyword]++;
+        (!acc[keyword]) ? acc[keyword] = 1 : acc[keyword]++;
         return acc;
     }, {});
 }
@@ -133,7 +134,6 @@ function renderMeme() {
     var memeImg = new Image();
     memeImg.src = img.url;
     canvas.height = memeImg.height;
-    gMeme.texts[1].posY = canvas.height - 100;
     canvas.width = memeImg.width;
     memeImg.onload = function () {
         ctx.drawImage(memeImg, 0, 0, canvas.width, canvas.height);
@@ -207,7 +207,7 @@ function toggleKeywordsModal() {
 
 function incDecFontSize(inc) {
     var textIdx = gMeme.selectedTextIdx;
-    (inc) ? gMeme.texts[textIdx].size += 4: gMeme.texts[textIdx].size -= 4;
+    (inc) ? gMeme.texts[textIdx].size += 4 : gMeme.texts[textIdx].size -= 4;
     renderMeme();
 }
 
@@ -224,9 +224,9 @@ function changeTextAlign(event, align) {
 }
 
 function fontChoose() {
+    var textIdx = gMeme.selectedTextIdx;
     var font = document.querySelector('.font-choose').value;
-    gMeme.texts[0].font = font;
-    console.log(gMeme.texts[0].font);
+    gMeme.texts[textIdx].font = font;
     renderMeme();
 }
 
@@ -257,7 +257,7 @@ function toggleMenu() {
 
 function addLine() {
 
-    var lastPosY = (gMeme.texts[gMeme.texts.length - 1].posY) - 50;
+    var lastPosY = (gMeme.texts[gMeme.texts.length - 1].posY) + 50;
     if (gMeme.texts.length < 4) {
         gMeme.texts.push({
             line: 'I never eat Falafel',
@@ -291,9 +291,6 @@ function removeLine(index, button) {
     renderInputLine();
 }
 
-
-var gCurrUploadImg;
-
 function previewImage() {
     var preview = document.querySelector('img'); //selects the query named img
     var file = document.querySelector('input[type=file]').files[0]; //sames as here
@@ -312,9 +309,16 @@ function previewImage() {
 }
 
 function uploadImage() {
-    if(!gCurrUploadImg) return;
+    if (!gCurrUploadImg) return;
     addImg(gCurrUploadImg);
     renderGallery(gImgs);
     toggleUploadModal();
     gCurrUploadImg = '';
+}
+
+function moveLineVertical(dirction) {
+    var textIdx = gMeme.selectedTextIdx;
+    if (dirction === 'up') gMeme.texts[textIdx].posY -= 5;
+    else gMeme.texts[textIdx].posY += 5;
+    renderMeme();
 }
